@@ -34,7 +34,7 @@ const slides = [
   {
     id: "cover",
     render: () => (
-      <div className="flex flex-col items-center justify-center h-full text-center px-10 sm:px-20 relative overflow-hidden">
+      <div className="flex flex-col items-center justify-center h-full text-center px-16 sm:px-[100px] relative overflow-hidden">
         {/* Decorative background elements */}
         <div className="absolute top-20 right-20 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px]" />
         <div className="absolute bottom-20 left-20 w-[400px] h-[400px] rounded-full bg-primary/3 blur-[100px]" />
@@ -85,7 +85,7 @@ const slides = [
   {
     id: "introduction",
     render: () => (
-      <div className="flex flex-col h-full px-20 py-16 relative">
+      <div className="flex flex-col h-full px-[72px] py-16 relative">
         <div className="absolute top-0 right-0 w-[600px] h-[400px] bg-primary/3 blur-[100px] rounded-full" />
         <div className="relative z-10">
           <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">01</span>
@@ -120,7 +120,7 @@ const slides = [
   {
     id: "vercel-services",
     render: () => (
-      <div className="flex flex-col h-full px-20 py-16 relative">
+      <div className="flex flex-col h-full px-[72px] py-16 relative">
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/3 blur-[120px] rounded-full" />
         <div className="relative z-10">
           <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">02</span>
@@ -155,7 +155,7 @@ const slides = [
   {
     id: "case-study",
     render: () => (
-      <div className="flex flex-col h-full px-20 py-16 relative">
+      <div className="flex flex-col h-full px-[72px] py-16 relative">
         <div className="absolute top-10 right-10 w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full" />
         <div className="relative z-10">
           <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">03</span>
@@ -219,7 +219,7 @@ const slides = [
   {
     id: "best-practices",
     render: () => (
-      <div className="flex flex-col h-full px-20 py-16 relative">
+      <div className="flex flex-col h-full px-[72px] py-16 relative">
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/3 blur-[120px] rounded-full" />
         <div className="relative z-10">
           <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">04</span>
@@ -282,7 +282,7 @@ const slides = [
   {
     id: "comparison",
     render: () => (
-      <div className="flex flex-col h-full px-20 py-16 relative">
+      <div className="flex flex-col h-full px-[72px] py-16 relative">
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/3 blur-[120px] rounded-full" />
         <div className="relative z-10">
           <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">05</span>
@@ -324,7 +324,7 @@ const slides = [
   {
     id: "conclusion",
     render: () => (
-      <div className="flex flex-col h-full px-20 py-16 relative overflow-hidden">
+      <div className="flex flex-col h-full px-[72px] py-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/3" />
         <div className="relative z-10">
           <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">06</span>
@@ -577,7 +577,8 @@ const ScaledSlide = ({ current, isFullscreen }: { current: number; isFullscreen:
   const updateScale = useCallback(() => {
     if (!containerRef.current) return;
     const r = containerRef.current.getBoundingClientRect();
-    setScale(Math.min(r.width / W, r.height / H));
+    // Use 96% of available space to leave breathing room
+    setScale(Math.min((r.width * 0.96) / W, (r.height * 0.96) / H));
   }, []);
 
   useEffect(() => {
@@ -593,25 +594,26 @@ const ScaledSlide = ({ current, isFullscreen }: { current: number; isFullscreen:
   });
 
   return (
-    <div ref={containerRef} className="absolute inset-0">
+    <div ref={containerRef} className="absolute inset-0 flex items-center justify-center p-4">
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.03 }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
-          className="absolute"
-          style={{
-            width: W, height: H,
-            left: "50%", top: "50%",
-            marginLeft: -W / 2, marginTop: -H / 2,
-            transform: `scale(${scale})`,
-            transformOrigin: "center center",
-          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
         >
-          <div className={`w-full h-full bg-background overflow-hidden ${isFullscreen ? "" : "rounded-xl border border-border/50 shadow-2xl shadow-black/20"}`}>
-            {slides[current].render()}
+          <div
+            style={{
+              width: W,
+              height: H,
+              transform: `scale(${scale})`,
+              transformOrigin: "center center",
+            }}
+          >
+            <div className={`w-full h-full bg-background overflow-hidden ${isFullscreen ? "" : "rounded-xl border border-border/50 shadow-2xl shadow-black/20"}`}>
+              {slides[current].render()}
+            </div>
           </div>
         </motion.div>
       </AnimatePresence>
