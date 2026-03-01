@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import heroIllustration from "@/assets/hero-illustration.png";
 
 const Hero = () => {
   return (
@@ -8,12 +9,11 @@ const Hero = () => {
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] animate-pulse-glow" />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
+      <div className="max-w-7xl mx-auto w-full relative z-10 grid lg:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-3xl"
         >
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-6">
             Cloud · SMS · Hosting
@@ -27,7 +27,7 @@ const Hero = () => {
           </h1>
           <p className="font-body text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed mb-12">
             G2Cloud delivers practical cloud training, reliable bulk SMS, and
-            secure hosting — everything your organization needs to scale with
+            secure hosting. Everything your organization needs to scale with
             clarity and precision.
           </p>
           <div className="flex flex-wrap gap-4">
@@ -44,6 +44,19 @@ const Hero = () => {
               Talk to Us
             </a>
           </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="hidden lg:flex items-center justify-center"
+        >
+          <img
+            src={heroIllustration}
+            alt="Cloud computing illustration"
+            className="w-full max-w-lg drop-shadow-[0_0_60px_hsl(174_62%_47%/0.2)]"
+          />
         </motion.div>
       </div>
     </section>
