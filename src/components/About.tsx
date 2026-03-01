@@ -36,8 +36,8 @@ const About = () => {
           <motion.div {...fadeUp} transition={{ duration: 0.7, delay: 0.2 }}>
             <h3 className="font-display text-2xl font-bold mb-4">Our Vision</h3>
             <p className="font-body text-muted-foreground leading-relaxed text-lg">
-              A future where every organization — regardless of size or location
-              — has access to world-class cloud infrastructure, communication
+              A future where every organization, regardless of size or location,
+              has access to world-class cloud infrastructure, communication
               tools, and the expertise to use them effectively. We build for
               long-term impact, not short-term hype.
             </p>

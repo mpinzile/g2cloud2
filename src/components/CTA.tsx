@@ -27,7 +27,7 @@ const CTA = () => {
             </h2>
             <p className="font-body text-lg text-muted-foreground max-w-xl mx-auto mb-10">
               Whether you're starting your cloud journey, scaling your messaging,
-              or launching your next project — we're ready when you are.
+              or launching your next project, we're ready when you are.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
