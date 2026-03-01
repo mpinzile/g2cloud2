@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
+import architectureDiagram from "@/assets/architecture-diagram.png";
 import {
   Cloud,
   Globe,
@@ -324,12 +325,27 @@ const slides = [
     ),
   },
   {
+    id: "architecture",
+    render: () => (
+      <div className="flex flex-col items-center justify-center h-full px-[72px] py-16 relative">
+        <div className="absolute top-10 left-10 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full" />
+        <div className="relative z-10 text-center mb-8">
+          <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">06</span>
+          <h2 className={`font-display text-[72px] font-bold leading-[1] ${S.heading}`}>System Architecture</h2>
+        </div>
+        <div className="relative z-10 flex-1 flex items-center justify-center w-full">
+          <img src={architectureDiagram} alt="G2Cloud Static Website Architecture" className="max-w-full max-h-full object-contain rounded-2xl" />
+        </div>
+      </div>
+    ),
+  },
+  {
     id: "conclusion",
     render: () => (
       <div className="flex flex-col h-full px-[72px] py-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/3" />
         <div className="relative z-10">
-          <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">06</span>
+          <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">07</span>
           <h2 className={`font-display text-[72px] font-bold leading-[1] mb-14 ${S.heading}`}>Key Takeaways</h2>
         </div>
         <div className="grid grid-cols-3 gap-10 flex-1 relative z-10">
