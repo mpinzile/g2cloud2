@@ -22,7 +22,7 @@ const Hero = () => {
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-8">
               Build with
               <br />
-              <span className="text-gradient">confidence</span>
+              <span className="text-gradient">Clarity</span>
               <br />
               in the cloud.
             </h1>
