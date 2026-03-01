@@ -29,16 +29,27 @@ import {
   Link as LinkIcon,
 } from "lucide-react";
 
+// Light-theme slide wrapper class
+const S = {
+  muted: "text-gray-500",
+  heading: "text-gray-900",
+  card: "bg-gray-50/80 border border-gray-200/80",
+  cardHover: "hover:border-primary/30",
+  iconBox: "w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6",
+  icon: "w-7 h-7 text-primary",
+  divider: "w-16 h-0.5 bg-primary/40",
+  bullet: "w-2 h-2 rounded-full bg-primary shrink-0 mt-2.5",
+  check: "w-5 h-5 text-primary shrink-0 mt-1",
+};
+
 // ─── Slide Data ───
 const slides = [
   {
     id: "cover",
     render: () => (
       <div className="flex flex-col items-center justify-center h-full text-center px-16 sm:px-[100px] relative overflow-hidden">
-        {/* Decorative background elements */}
         <div className="absolute top-20 right-20 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px]" />
         <div className="absolute bottom-20 left-20 w-[400px] h-[400px] rounded-full bg-primary/3 blur-[100px]" />
-
         <div className="relative z-10 flex flex-col items-center">
           <div className="mb-10">
             <span className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-primary/30 bg-primary/5 text-primary font-mono text-base tracking-widest uppercase">
@@ -46,15 +57,15 @@ const slides = [
               Cloud Computing · Level 8
             </span>
           </div>
-          <h1 className="font-display text-[90px] font-bold leading-[0.95] mb-10 max-w-[1400px]">
+          <h1 className={`font-display text-[90px] font-bold leading-[0.95] mb-10 max-w-[1400px] ${S.heading}`}>
             Practical Evaluation of
             <br />
             <span className="text-gradient">Free Cloud Services</span>
           </h1>
-          <p className="text-3xl text-muted-foreground font-body max-w-[900px] mb-14 leading-relaxed">
+          <p className={`text-3xl font-body max-w-[900px] mb-14 leading-relaxed ${S.muted}`}>
             A Case Study of Vercel Cloud Platform using G2Cloud
           </p>
-          <div className="flex items-center gap-8 text-muted-foreground font-mono text-lg tracking-wide mb-20">
+          <div className={`flex items-center gap-8 font-mono text-lg tracking-wide mb-20 ${S.muted}`}>
             <span className="flex items-center gap-2">
               <FileText className="w-5 h-5 text-primary" />
               March 2026
@@ -65,7 +76,7 @@ const slides = [
               Group Presentation
             </span>
           </div>
-          <div className="grid grid-cols-4 gap-x-20 gap-y-4 text-lg font-body text-muted-foreground">
+          <div className={`grid grid-cols-4 gap-x-20 gap-y-4 text-lg font-body ${S.muted}`}>
             <span>David Mpinzile</span>
             <span>Regina Mlay</span>
             <span>Lightness Joachim</span>
@@ -86,10 +97,10 @@ const slides = [
     id: "introduction",
     render: () => (
       <div className="flex flex-col h-full px-[72px] py-16 relative">
-        <div className="absolute top-0 right-0 w-[600px] h-[400px] bg-primary/3 blur-[100px] rounded-full" />
+        <div className="absolute top-0 right-0 w-[600px] h-[400px] bg-primary/5 blur-[100px] rounded-full" />
         <div className="relative z-10">
           <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">01</span>
-          <h2 className="font-display text-[72px] font-bold leading-[1] mb-16">Introduction</h2>
+          <h2 className={`font-display text-[72px] font-bold leading-[1] mb-16 ${S.heading}`}>Introduction</h2>
         </div>
         <div className="grid grid-cols-3 gap-10 flex-1 relative z-10">
           {[
@@ -97,16 +108,14 @@ const slides = [
             { icon: Zap, title: "Free Tiers", points: ["Learn and experiment at low or zero cost", "Prototype MVPs and student projects fast"] },
             { icon: Target, title: "This Study", points: ["Vercel Hobby plan with G2Cloud site", "Focus on capabilities, limits, and deploy ease"] },
           ].map((col) => (
-            <div key={col.title} className="flex flex-col rounded-2xl border border-border/50 bg-card/30 p-10">
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                <col.icon className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="font-display text-3xl font-bold mb-5">{col.title}</h3>
-              <div className="w-16 h-0.5 bg-primary/50 mb-6" />
-              <ul className="space-y-5 font-body text-xl text-muted-foreground leading-relaxed">
+            <div key={col.title} className={`flex flex-col rounded-2xl p-10 ${S.card}`}>
+              <div className={S.iconBox}><col.icon className={S.icon} /></div>
+              <h3 className={`font-display text-3xl font-bold mb-5 ${S.heading}`}>{col.title}</h3>
+              <div className={S.divider + " mb-6"} />
+              <ul className={`space-y-5 font-body text-xl leading-relaxed ${S.muted}`}>
                 {col.points.map((p, i) => (
                   <li key={i} className="flex gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-1" />
+                    <CheckCircle2 className={S.check} />
                     {p}
                   </li>
                 ))}
@@ -121,27 +130,25 @@ const slides = [
     id: "vercel-services",
     render: () => (
       <div className="flex flex-col h-full px-[72px] py-16 relative">
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/3 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full" />
         <div className="relative z-10">
           <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">02</span>
-          <h2 className="font-display text-[72px] font-bold leading-[1] mb-3">Vercel Free Tier Services</h2>
-          <p className="font-body text-2xl text-muted-foreground mb-14">Hosting, Serverless Functions, CDN</p>
+          <h2 className={`font-display text-[72px] font-bold leading-[1] mb-3 ${S.heading}`}>Vercel Free Tier Services</h2>
+          <p className={`font-body text-2xl mb-14 ${S.muted}`}>Hosting, Serverless Functions, CDN</p>
         </div>
         <div className="grid grid-cols-3 gap-8 flex-1 relative z-10">
           {[
-            { icon: Server, title: "Hosting", color: "from-primary/20 to-primary/5", points: ["Git based deploys with automatic builds and scaling", "Great for static and Jamstack sites", "Limits include bandwidth, build minutes, and concurrency"] },
-            { icon: Zap, title: "Serverless Functions", color: "from-primary/15 to-primary/5", points: ["HTTP triggered backend logic in the same project", "Good for forms, auth callbacks, and basic APIs", "Limits include execution time and concurrency"] },
-            { icon: Globe, title: "CDN", color: "from-primary/10 to-primary/5", points: ["Global edge delivery by default", "Low latency for worldwide users", "Limits include bandwidth caps after allowance"] },
+            { icon: Server, title: "Hosting", points: ["Git based deploys with automatic builds and scaling", "Great for static and Jamstack sites", "Limits include bandwidth, build minutes, and concurrency"] },
+            { icon: Zap, title: "Serverless Functions", points: ["HTTP triggered backend logic in the same project", "Good for forms, auth callbacks, and basic APIs", "Limits include execution time and concurrency"] },
+            { icon: Globe, title: "CDN", points: ["Global edge delivery by default", "Low latency for worldwide users", "Limits include bandwidth caps after allowance"] },
           ].map((s) => (
-            <div key={s.title} className={`rounded-2xl border border-border/50 bg-gradient-to-b ${s.color} p-10 flex flex-col`}>
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                <s.icon className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="font-display text-3xl font-bold mb-8">{s.title}</h3>
-              <ul className="space-y-5 font-body text-xl text-muted-foreground leading-relaxed">
+            <div key={s.title} className={`rounded-2xl p-10 flex flex-col ${S.card}`}>
+              <div className={S.iconBox}><s.icon className={S.icon} /></div>
+              <h3 className={`font-display text-3xl font-bold mb-8 ${S.heading}`}>{s.title}</h3>
+              <ul className={`space-y-5 font-body text-xl leading-relaxed ${S.muted}`}>
                 {s.points.map((p, i) => (
                   <li key={i} className="flex gap-3">
-                    <span className="w-2 h-2 rounded-full bg-primary shrink-0 mt-2.5" />
+                    <span className={S.bullet} />
                     {p}
                   </li>
                 ))}
@@ -159,28 +166,28 @@ const slides = [
         <div className="absolute top-10 right-10 w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full" />
         <div className="relative z-10">
           <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">03</span>
-          <h2 className="font-display text-[72px] font-bold leading-[1] mb-3">G2Cloud Deployment</h2>
-          <p className="font-body text-2xl text-muted-foreground mb-12">Static site on Vercel free tier</p>
+          <h2 className={`font-display text-[72px] font-bold leading-[1] mb-3 ${S.heading}`}>G2Cloud Deployment</h2>
+          <p className={`font-body text-2xl mb-12 ${S.muted}`}>Static site on Vercel free tier</p>
         </div>
         <div className="grid grid-cols-2 gap-16 flex-1 relative z-10">
           <div>
-            <div className="rounded-2xl border border-border/50 bg-card/30 p-10 mb-8">
-              <h3 className="font-display text-2xl font-bold mb-6 flex items-center gap-3">
+            <div className={`rounded-2xl p-10 mb-8 ${S.card}`}>
+              <h3 className={`font-display text-2xl font-bold mb-6 flex items-center gap-3 ${S.heading}`}>
                 <Target className="w-6 h-6 text-primary" />
                 Context and Results
               </h3>
-              <div className="space-y-4 font-body text-xl text-muted-foreground leading-relaxed">
-                <p className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-1" /> Zero cost startup web presence</p>
-                <p className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-1" /> Static site with About, Services, Vision, Contact</p>
-                <p className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-1" /> Git repo to Vercel build to global CDN</p>
+              <div className={`space-y-4 font-body text-xl leading-relaxed ${S.muted}`}>
+                <p className="flex gap-3"><CheckCircle2 className={S.check} /> Zero cost startup web presence</p>
+                <p className="flex gap-3"><CheckCircle2 className={S.check} /> Static site with About, Services, Vision, Contact</p>
+                <p className="flex gap-3"><CheckCircle2 className={S.check} /> Git repo to Vercel build to global CDN</p>
               </div>
             </div>
             <div className="rounded-2xl border border-primary/20 bg-primary/5 p-10">
-              <h3 className="font-display text-2xl font-bold mb-6 flex items-center gap-3">
+              <h3 className={`font-display text-2xl font-bold mb-6 flex items-center gap-3 ${S.heading}`}>
                 <Eye className="w-6 h-6 text-primary" />
                 Evidence
               </h3>
-              <ul className="space-y-4 font-body text-xl text-muted-foreground">
+              <ul className={`space-y-4 font-body text-xl ${S.muted}`}>
                 <li className="flex gap-3"><Rocket className="w-5 h-5 text-primary shrink-0 mt-1" /> Public site deployed in minutes</li>
                 <li className="flex gap-3"><Globe className="w-5 h-5 text-primary shrink-0 mt-1" /> Fast global performance via edge CDN</li>
                 <li className="flex gap-3"><GitBranch className="w-5 h-5 text-primary shrink-0 mt-1" /> Simple operations with CI/CD pipeline</li>
@@ -188,7 +195,7 @@ const slides = [
             </div>
           </div>
           <div>
-            <h3 className="font-display text-2xl font-bold mb-8 flex items-center gap-3">
+            <h3 className={`font-display text-2xl font-bold mb-8 flex items-center gap-3 ${S.heading}`}>
               <Rocket className="w-6 h-6 text-primary" />
               Deployment Workflow
             </h3>
@@ -198,16 +205,16 @@ const slides = [
                 { step: "02", icon: Server, label: "Vercel Build", desc: "Auto detect and build" },
                 { step: "03", icon: Globe, label: "Global CDN", desc: "Edge delivery worldwide" },
                 { step: "04", icon: LinkIcon, label: "Public URL", desc: "Live site accessible" },
-              ].map((item, i) => (
-                <div key={item.step} className="flex items-center gap-6 rounded-xl border border-border/50 bg-card/30 px-8 py-6 group hover:border-primary/30 transition-colors">
+              ].map((item) => (
+                <div key={item.step} className={`flex items-center gap-6 rounded-xl px-8 py-6 ${S.card} ${S.cardHover} transition-colors`}>
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                     <item.icon className="w-6 h-6 text-primary" />
                   </div>
                   <div className="flex-1">
-                    <p className="font-display text-xl font-bold">{item.label}</p>
-                    <p className="font-body text-lg text-muted-foreground">{item.desc}</p>
+                    <p className={`font-display text-xl font-bold ${S.heading}`}>{item.label}</p>
+                    <p className={`font-body text-lg ${S.muted}`}>{item.desc}</p>
                   </div>
-                  <span className="font-mono text-3xl font-bold text-primary/30">{item.step}</span>
+                  <span className="font-mono text-3xl font-bold text-primary/20">{item.step}</span>
                 </div>
               ))}
             </div>
@@ -220,17 +227,16 @@ const slides = [
     id: "best-practices",
     render: () => (
       <div className="flex flex-col h-full px-[72px] py-16 relative">
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/3 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full" />
         <div className="relative z-10">
           <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">04</span>
-          <h2 className="font-display text-[72px] font-bold leading-[1] mb-3">Responsible Use</h2>
-          <p className="font-body text-2xl text-muted-foreground mb-14">Free tier usage, security, and governance</p>
+          <h2 className={`font-display text-[72px] font-bold leading-[1] mb-3 ${S.heading}`}>Responsible Use</h2>
+          <p className={`font-body text-2xl mb-14 ${S.muted}`}>Free tier usage, security, and governance</p>
         </div>
         <div className="grid grid-cols-3 gap-8 flex-1 relative z-10">
           {[
             {
-              icon: DollarSign,
-              title: "Usage and Cost",
+              icon: DollarSign, title: "Usage and Cost",
               items: [
                 { icon: Eye, text: "Know free tier limits and monitor usage" },
                 { icon: TriangleAlert, text: "Disable auto upgrades to prevent surprise billing" },
@@ -239,8 +245,7 @@ const slides = [
               ],
             },
             {
-              icon: Lock,
-              title: "Security",
+              icon: Lock, title: "Security",
               items: [
                 { icon: Shield, text: "Enable MFA and use strong passwords" },
                 { icon: Users, text: "Apply least privilege roles and permissions" },
@@ -249,8 +254,7 @@ const slides = [
               ],
             },
             {
-              icon: Scale,
-              title: "Governance",
+              icon: Scale, title: "Governance",
               items: [
                 { icon: FileText, text: "Define acceptable use and upgrade approvals" },
                 { icon: Users, text: "Assign owners for monitoring and maintenance" },
@@ -259,16 +263,14 @@ const slides = [
               ],
             },
           ].map((col) => (
-            <div key={col.title} className="rounded-2xl border border-border/50 bg-card/30 p-10 flex flex-col">
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                <col.icon className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="font-display text-3xl font-bold mb-6">{col.title}</h3>
-              <div className="w-16 h-0.5 bg-primary/50 mb-6" />
+            <div key={col.title} className={`rounded-2xl p-10 flex flex-col ${S.card}`}>
+              <div className={S.iconBox}><col.icon className={S.icon} /></div>
+              <h3 className={`font-display text-3xl font-bold mb-6 ${S.heading}`}>{col.title}</h3>
+              <div className={S.divider + " mb-6"} />
               <ul className="space-y-5">
                 {col.items.map((item, i) => (
-                  <li key={i} className="flex gap-3 font-body text-xl text-muted-foreground leading-relaxed">
-                    <item.icon className="w-5 h-5 text-primary shrink-0 mt-1" />
+                  <li key={i} className={`flex gap-3 font-body text-xl leading-relaxed ${S.muted}`}>
+                    <item.icon className={S.check} />
                     {item.text}
                   </li>
                 ))}
@@ -283,18 +285,18 @@ const slides = [
     id: "comparison",
     render: () => (
       <div className="flex flex-col h-full px-[72px] py-16 relative">
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/3 blur-[120px] rounded-full" />
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full" />
         <div className="relative z-10">
           <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">05</span>
-          <h2 className="font-display text-[72px] font-bold leading-[1] mb-14">Vercel vs AWS Free Tier</h2>
+          <h2 className={`font-display text-[72px] font-bold leading-[1] mb-14 ${S.heading}`}>Vercel vs AWS Free Tier</h2>
         </div>
         <div className="grid grid-cols-2 gap-12 flex-1 relative z-10">
-          <div className="rounded-2xl border-2 border-primary/40 bg-gradient-to-b from-primary/10 to-primary/3 p-14 flex flex-col">
+          <div className="rounded-2xl border-2 border-primary/30 bg-primary/5 p-14 flex flex-col">
             <div className="w-16 h-16 rounded-2xl bg-primary/15 flex items-center justify-center mb-8">
               <Zap className="w-8 h-8 text-primary" />
             </div>
             <h3 className="font-display text-4xl font-bold mb-10 text-primary">Vercel</h3>
-            <ul className="space-y-6 font-body text-2xl text-foreground/80 leading-relaxed flex-1">
+            <ul className={`space-y-6 font-body text-2xl leading-relaxed flex-1 ${S.heading}`}>
               <li className="flex gap-4"><CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1" /> Fast setup and great developer experience</li>
               <li className="flex gap-4"><CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1" /> Optimized for frontend and serverless web apps</li>
               <li className="flex gap-4"><CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1" /> Best for students, prototypes, and MVPs</li>
@@ -303,18 +305,18 @@ const slides = [
               <p className="font-mono text-base text-primary tracking-wide">Best for static sites and full stack JS</p>
             </div>
           </div>
-          <div className="rounded-2xl border border-border/50 bg-card/40 p-14 flex flex-col">
-            <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center mb-8">
-              <Cloud className="w-8 h-8 text-muted-foreground" />
+          <div className={`rounded-2xl p-14 flex flex-col ${S.card}`}>
+            <div className="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center mb-8">
+              <Cloud className="w-8 h-8 text-gray-400" />
             </div>
-            <h3 className="font-display text-4xl font-bold mb-10">AWS</h3>
-            <ul className="space-y-6 font-body text-2xl text-muted-foreground leading-relaxed flex-1">
-              <li className="flex gap-4"><span className="w-2 h-2 rounded-full bg-muted-foreground shrink-0 mt-3" /> Broad services and fine grained control</li>
-              <li className="flex gap-4"><span className="w-2 h-2 rounded-full bg-muted-foreground shrink-0 mt-3" /> Suitable for complex, production systems</li>
-              <li className="flex gap-4"><span className="w-2 h-2 rounded-full bg-muted-foreground shrink-0 mt-3" /> More learning effort but greater flexibility</li>
+            <h3 className={`font-display text-4xl font-bold mb-10 ${S.heading}`}>AWS</h3>
+            <ul className={`space-y-6 font-body text-2xl leading-relaxed flex-1 ${S.muted}`}>
+              <li className="flex gap-4"><span className="w-2 h-2 rounded-full bg-gray-400 shrink-0 mt-3" /> Broad services and fine grained control</li>
+              <li className="flex gap-4"><span className="w-2 h-2 rounded-full bg-gray-400 shrink-0 mt-3" /> Suitable for complex, production systems</li>
+              <li className="flex gap-4"><span className="w-2 h-2 rounded-full bg-gray-400 shrink-0 mt-3" /> More learning effort but greater flexibility</li>
             </ul>
-            <div className="mt-10 pt-8 border-t border-border">
-              <p className="font-mono text-base text-muted-foreground tracking-wide">Best for custom infrastructure and advanced services</p>
+            <div className="mt-10 pt-8 border-t border-gray-200">
+              <p className={`font-mono text-base tracking-wide ${S.muted}`}>Best for custom infrastructure and advanced services</p>
             </div>
           </div>
         </div>
@@ -328,7 +330,7 @@ const slides = [
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/3" />
         <div className="relative z-10">
           <span className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3 block">06</span>
-          <h2 className="font-display text-[72px] font-bold leading-[1] mb-14">Key Takeaways</h2>
+          <h2 className={`font-display text-[72px] font-bold leading-[1] mb-14 ${S.heading}`}>Key Takeaways</h2>
         </div>
         <div className="grid grid-cols-3 gap-10 flex-1 relative z-10">
           {[
@@ -336,16 +338,14 @@ const slides = [
             { icon: Rocket, title: "Next Steps", items: ["Monitor limits for bandwidth and function runtime", "Add analytics and basic serverless APIs", "Define upgrade thresholds and governance rules"] },
             { icon: FileText, title: "Appendices", items: ["A: System architecture diagram", "B: Deployment screenshots", "C: Live demo link"] },
           ].map((col) => (
-            <div key={col.title} className="rounded-2xl border border-border/50 bg-card/30 p-10 flex flex-col">
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                <col.icon className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="font-display text-3xl font-bold mb-6">{col.title}</h3>
-              <div className="w-16 h-0.5 bg-primary/50 mb-6" />
-              <ul className="space-y-5 font-body text-xl text-muted-foreground leading-relaxed">
+            <div key={col.title} className={`rounded-2xl p-10 flex flex-col ${S.card}`}>
+              <div className={S.iconBox}><col.icon className={S.icon} /></div>
+              <h3 className={`font-display text-3xl font-bold mb-6 ${S.heading}`}>{col.title}</h3>
+              <div className={S.divider + " mb-6"} />
+              <ul className={`space-y-5 font-body text-xl leading-relaxed ${S.muted}`}>
                 {col.items.map((item, i) => (
                   <li key={i} className="flex gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-1" />
+                    <CheckCircle2 className={S.check} />
                     {item}
                   </li>
                 ))}
@@ -355,7 +355,7 @@ const slides = [
         </div>
         <div className="mt-auto pt-14 text-center relative z-10">
           <p className="font-display text-5xl font-bold text-gradient mb-4">Thank You</p>
-          <p className="font-body text-2xl text-muted-foreground">Questions and Discussion</p>
+          <p className={`font-body text-2xl ${S.muted}`}>Questions and Discussion</p>
         </div>
       </div>
     ),
@@ -500,7 +500,7 @@ const Presentation = () => {
                   i === current ? "border-primary shadow-lg shadow-primary/20 ring-2 ring-primary/10" : "border-transparent hover:border-border"
                 }`}
               >
-                <div className="relative bg-background aspect-video overflow-hidden rounded-md">
+                <div className="relative bg-white aspect-video overflow-hidden rounded-md">
                   <div style={{ width: 1920, height: 1080, transform: `scale(${192 / 1920})`, transformOrigin: "top left" }} className="pointer-events-none">
                     {slide.render()}
                   </div>
@@ -611,7 +611,7 @@ const ScaledSlide = ({ current, isFullscreen }: { current: number; isFullscreen:
               transformOrigin: "center center",
             }}
           >
-            <div className={`w-full h-full bg-background overflow-hidden ${isFullscreen ? "" : "rounded-xl border border-border/50 shadow-2xl shadow-black/20"}`}>
+            <div className={`w-full h-full bg-white text-gray-900 overflow-hidden ${isFullscreen ? "" : "rounded-xl border border-gray-200 shadow-2xl shadow-black/10"}`}>
               {slides[current].render()}
             </div>
           </div>
