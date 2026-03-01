@@ -1,12 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Services from "@/components/Services";
+import WhyG2Cloud from "@/components/WhyG2Cloud";
+import Team from "@/components/Team";
+import CTA from "@/components/CTA";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-background text-foreground">
+      <Navbar />
+      <Hero />
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+        <div className="h-px bg-border" />
       </div>
+      <About />
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+        <div className="h-px bg-border" />
+      </div>
+      <Services />
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+        <div className="h-px bg-border" />
+      </div>
+      <WhyG2Cloud />
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+        <div className="h-px bg-border" />
+      </div>
+      <Team />
+      <CTA />
+      <Footer />
     </div>
   );
 };
