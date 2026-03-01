@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
 
 import teamDavid from "@/assets/team-david.jpg";
-import teamJohn from "@/assets/team-john.jpg";
-import teamBrian from "@/assets/team-brian.jpg";
-import teamKelvin from "@/assets/team-kelvin.jpg";
-import teamAsha from "@/assets/team-asha.jpg";
-import teamNeema from "@/assets/team-neema.jpg";
-import teamGrace from "@/assets/team-grace.jpg";
-import teamRehema from "@/assets/team-rehema.jpg";
+import teamRegina from "@/assets/team-regina.jpg";
+import teamLightness from "@/assets/team-lightness.jpg";
+import teamErick from "@/assets/team-erick.jpg";
+import teamDhiki from "@/assets/team-dhiki.jpg";
+import teamElizabeth from "@/assets/team-elizabeth.jpg";
+import teamGabriel from "@/assets/team-gabriel.jpg";
+import teamPeter from "@/assets/team-peter.jpg";
+import teamSalvatory from "@/assets/team-salvatory.jpg";
+import teamRegan from "@/assets/team-regan.jpg";
+import teamEmilia from "@/assets/team-emilia.jpg";
 
 const team = [
   {
@@ -17,46 +20,64 @@ const team = [
     image: teamDavid,
   },
   {
-    name: "Asha Salum",
+    name: "Regina Mlay",
     role: "Chief Technology Officer",
     bio: "Architects scalable cloud infrastructure and leads all technical operations with precision.",
-    image: teamAsha,
+    image: teamRegina,
   },
   {
-    name: "John Mwita",
+    name: "Lightness Joachim",
     role: "Head of Cloud Training",
     bio: "Designs industry-aligned curricula that turn learners into confident cloud practitioners.",
-    image: teamJohn,
+    image: teamLightness,
   },
   {
-    name: "Neema Joseph",
-    role: "Head of Product",
-    bio: "Translates complex requirements into elegant, user-centered product experiences.",
-    image: teamNeema,
-  },
-  {
-    name: "Brian Kessy",
+    name: "Erick Peter",
     role: "Lead Engineer",
     bio: "Builds and maintains the core platform infrastructure powering all G2Cloud services.",
-    image: teamBrian,
+    image: teamErick,
   },
   {
-    name: "Grace Mwakalinga",
+    name: "Dhiki Kidanha",
+    role: "Head of Product",
+    bio: "Translates complex requirements into elegant, user-centered product experiences.",
+    image: teamDhiki,
+  },
+  {
+    name: "Elizabeth Tobias",
     role: "Head of Communications",
     bio: "Leads bulk SMS operations and client communication strategy across all channels.",
-    image: teamGrace,
+    image: teamElizabeth,
   },
   {
-    name: "Kelvin Mushi",
+    name: "Gabriel Lyaruu",
     role: "DevOps Architect",
     bio: "Ensures seamless deployments, monitoring, and reliability across every hosted environment.",
-    image: teamKelvin,
+    image: teamGabriel,
   },
   {
-    name: "Rehema Ally",
+    name: "Peter Kwene",
     role: "Head of Partnerships",
     bio: "Cultivates strategic relationships that expand G2Cloud's reach and impact across the region.",
-    image: teamRehema,
+    image: teamPeter,
+  },
+  {
+    name: "Salvatory Mchesha",
+    role: "Cloud Solutions Architect",
+    bio: "Designs enterprise cloud migration strategies and ensures optimal infrastructure performance.",
+    image: teamSalvatory,
+  },
+  {
+    name: "Regan Mtuka",
+    role: "Software Engineer",
+    bio: "Develops robust applications and integrations that power the G2Cloud platform.",
+    image: teamRegan,
+  },
+  {
+    name: "Emilia Nzilano",
+    role: "Operations Manager",
+    bio: "Streamlines processes and ensures operational excellence across all service lines.",
+    image: teamEmilia,
   },
 ];
 
@@ -94,7 +115,7 @@ const Team = () => {
               <div className="relative overflow-hidden rounded-xl mb-4 aspect-[4/5]">
                 <img
                   src={member.image}
-                  alt={`${member.name} — ${member.role}`}
+                  alt={`${member.name}, ${member.role}`}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                   loading="lazy"
                 />
